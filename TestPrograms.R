@@ -71,9 +71,46 @@ print(sum(px[6],px[10]))
 x<-function(x,p) (p^x*(1-p)^(1-x))
 x(0,0.5)
 
+#Binomial distribution
+#to take value 4 using sample size 10 with prob=0.3
+#we get 0.2
+dbinom(4,10,0.3) 
+
+fx<-function(x,n,p)(p^x*(1-p)^(n-x))
+fx(0,18,0.6)
+
+#Buttered bread falling down
+Bin_expected<-function(n,p) n*p
+Bin_variance<-function(n,p) n*p*(1-p)
+print(Bin_expected(10,0.5))
+print(Bin_variance(10,0.5))
+stddev=sqrt(Bin_variance(10,0.5))
+print(stddev)
+
+dbinom(7,10,0.5)
+
+
+curve(
+  dbinom(x, size=10, prob=0.3),
+  from = 0,
+  to = 10,
+  type = 'p', # It looks better using points rather than the default lines
+)
+
+curve(
+  dbinom(x,size=12,prob=0.2),
+  from = 0,
+  to = 10,
+  type = 'p', # It looks better using points rather than the default lines
+)
+
+
 #Poisson distribution
 #If, on average, 5 servers go offline during the day, what is the chance that no more than 1 will go offline? (Assume independence of servers going offline).
 ppois(1,lambda = 5)
 
 
-
+#exponential distribution
+exp <- function(x,beta) (1/beta)*exp(-x/beta)
+exp_expected<-function(x,beta) beta
+exp_variance<-function(x,beta) beta*beta
