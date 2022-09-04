@@ -54,4 +54,26 @@ px<-c(0.1,0.1,0.6,0.1,0.1)
 varianceB = sum((x - sum(x*px))^2 * px)
 print(varianceB)
 
+#Mean
+x<-c(500,100,20,0)
+px<-c(1/1000,2/1000,10/1000,987/1000)
+#Calculate mean
+meanval=sum(x*px)
+print(meanval)
+
+x<-c(2,3,4,5,6,7,8,9,10,11,12)
+px<-c(1/36,2/36,3/36,4/36,5/36,6/36,5/36,4/36,3/36,2/36,1/36)
+meanval=sum(x*px)
+print(meanval)
+print(sum(px[6],px[10]))
+
+#Bernoulli distribution
+x<-function(x,p) (p^x*(1-p)^(1-x))
+x(0,0.5)
+
+#Poisson distribution
+#If, on average, 5 servers go offline during the day, what is the chance that no more than 1 will go offline? (Assume independence of servers going offline).
+ppois(1,lambda = 5)
+
+
 
