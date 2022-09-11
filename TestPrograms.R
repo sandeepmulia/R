@@ -114,3 +114,58 @@ ppois(1,lambda = 5)
 exp <- function(x,beta) (1/beta)*exp(-x/beta)
 exp_expected<-function(x,beta) beta
 exp_variance<-function(x,beta) beta*beta
+
+
+#Uniform distribution
+uniform <-function(x,a,b) 1/(b-a)
+uniform_expected <-function(x,a,b) (a+b)/2
+uniform_variance <-function(x,a,b) (b-a)/12
+#test
+uniform(x,1,3)
+
+#Normal distribution (continuous random variables)
+std_density = function(x) (1/sqrt(2*pi))*(exp((-x^2)/2))
+integrate(std_density,lower=-Inf,upper=0.47 )
+pnorm(0.47) #same as the above
+
+pnorm(12,mean=10,sd=9)
+
+#height greater than 182.9 cms
+1-pnorm(182.9,mean=174,sd=6.4)
+
+#What's the chance that a randomly selected young man is 170-something cm tall?
+round(pnorm(180,mean=174,sd=6.4)-pnorm(170,mean=174,sd=6.4),4)
+
+#Find a range of heights that contains 95% of young men.
+x<-qnorm(0.95,mean=174,sd=6.4)
+print(x)
+
+#Chi squared distribution
+#Chi-squared distribution with 6 degrees of freedom
+pchisq(2,df=6)
+
+#Conversely, to find the value x such that P(X <= x) = p 
+#for p known, we use the command line:
+#Chi-squared distribution with 6 degrees of freedom
+qchisq(0.080314,df=6)
+
+#Student t-distribution
+df<-3
+pt(-1,df=df);
+#Reverse P(X<=x)=p
+qt(pt(-1,df),df)
+
+#F-distribution
+# Example: F distribution with 3 and 2 degrees of freedom
+df1<-3
+df2<-2
+pf(1.3, df1=df1,df2=df2)
+#Converse
+qf(0.5374263,df1=df1,df2=df2)
+# x here is the pth quantile of X
+
+
+#Differentiation
+f=expression(x^(1/3))
+D(f,'x')
+
