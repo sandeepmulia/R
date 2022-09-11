@@ -18,9 +18,22 @@ upper_ci <-xbar - ybar + qt(0.975, nx + ny -2)*sp*sqrt(1/nx + 1/ny)
 print(lower_ci)
 print(upper_ci)
 
-#test stat
+#test stat calculation
 test_stat = (xbar-ybar)/(sp*(sqrt((1/nx) + (1/ny))))
 test_stat_alt = (xbar-ybar)/sqrt(sp_squared*(1/nx + 1/ny))
 
 print(test_stat)
 print(test_stat_alt)
+
+#f-distribution
+confidence_intvl=0.95
+alpha=(1-confidence_intvl)
+fdist_upper = qf(alpha/2, df1=nx-1,df2=ny-1)
+print(paste("F-distribution",fdist_upper))
+print(fdist_upper*(sx_sq/sy_sq))
+
+qf(alpha/2, df1=ny-1, df2=nx-1)
+
+fdist_lower = (qf(alpha/2, df1=ny-1, df2=nx-1)) * (sx_sq/sy_sq)
+print(paste("Fdist lower :", fdist_lower))
+
