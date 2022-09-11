@@ -49,24 +49,25 @@ qchisq((1-(alpha/2)),df=df)
 sdev*sqrt((n-1)/(qchisq((1-alpha/2),df=df)))
 sdev*sqrt((n-1)/(qchisq((alpha/2),df=df)))
 
-#Assessment Q3
-nx <-78
-ny <-56
-xbar <-71.1466
-ybar <-79.0491
-sx <-120.9421
-sy <-74.5316
+#
+#Pooled variance
+n1<-68
+n2<-74
+s1<-4.89
+s2<-6.43
+xbar<-26.99
+ybar<-35.76
 
-sp <- sqrt((((nx-1)*(sx^2)) + ((ny-1)*(sy^2))) /(nx+ny-2))
-lower_ci <-xbar - ybar - qt(0.975, nx + ny -2)*sp*sqrt(1/nx + 1/ny)
-upper_ci <-xbar - ybar + qt(0.975, nx + ny -2)*sp*sqrt(1/nx + 1/ny)
+sp_squared = ((n1-1)*s1^2 + (n2-1)*s2^2)/(n1+n2-2)
+print(sp_squared)
+sp = sqrt(sp_squared)
+test_stat = (xbar-ybar)/(sp*(sqrt((1/n1) + (1/n2))))
+print(paste("Pooled Variance:",sp))
+print (paste("Test stat:",test_stat))
+qt(0.05,(n1+n2-2))
 
-print(sp)
-print(sp^2)
-print(lower_ci)
-print(upper_ci)
 
-2*pnorm(-1.96)
-
-pnorm(-5.29,lower.tail = TRUE) + pnorm(-1.37,lower.tail = TRUE)
-
+#F-distribution
+df1<-27
+df2<-25
+qf(0.05, df1=df1,df2=df2)
