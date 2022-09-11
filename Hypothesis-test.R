@@ -35,6 +35,20 @@ mean_observed + qt((1-(alpha/2)),df=df)*(sdev/sqrt(n))
 mean_observed - qt((1-(alpha/2)),df=df)*(sdev/sqrt(n))
 
 
+x<-c(57,65,65,55,58,57,71,60,57,65,62,60,54,70,57,52,49,65,68,60,65,68,44)
+n<-length(x)
+print(paste("Sample size:", n))
+mean_observed=60.174
+sdev=6.807
+confidence_intvl=95
+alpha=(100-confidence_intvl)*0.01
+df = n-1
+print(paste("Alpha , 1-alpha/2, alpha/2",alpha, (1-alpha/2), alpha/2))
+qchisq((1-(alpha/2)),df=df)
+
+sdev*sqrt((n-1)/(qchisq((1-alpha/2),df=df)))
+sdev*sqrt((n-1)/(qchisq((alpha/2),df=df)))
+
 #Assessment Q3
 nx <-78
 ny <-56
