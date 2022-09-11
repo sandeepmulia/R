@@ -34,7 +34,7 @@ print(alpha)
 mean_observed + qt((1-(alpha/2)),df=df)*(sdev/sqrt(n))
 mean_observed - qt((1-(alpha/2)),df=df)*(sdev/sqrt(n))
 
-
+#95% confidence interval for observed standard deviation
 x<-c(57,65,65,55,58,57,71,60,57,65,62,60,54,70,57,52,49,65,68,60,65,68,44)
 n<-length(x)
 print(paste("Sample size:", n))
